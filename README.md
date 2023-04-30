@@ -1,4 +1,4 @@
-Artificial Intelligence for Robotics 
+Artificial Intelligence for Robotics II
 ===================================================
 AI Planning: Model of a robotic coffee shop scenario in PDDL 
 =============================================================
