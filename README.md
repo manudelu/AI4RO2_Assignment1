@@ -1,4 +1,4 @@
-Artificial Intelligence for Robotics - Assignment I
+Artificial Intelligence for Robotics 
 ===================================================
 AI Planning: Model of a robotic coffee shop scenario in PDDL 
 =============================================================
