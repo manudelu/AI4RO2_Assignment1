@@ -1,0 +1,99 @@
+#!/bin/bash
+
+rm -rf means/
+rm -rf raw_data/
+rm -rf std-deviation/
+rm plan_fin
+
+for i in {1..100} 
+do
+  ./lpg++ -o domain.pddl -f problema1.pddl -speed -noout  >> plan_fin
+done
+
+
+#metric
+grep "METRIC" plan_fin >> dati_metric
+grep -Eo '[0-9\.]+' dati_metric >> a
+awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' < a  >> media_metric
+awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+        END {for (i=1;i<=NF;i++) {
+        printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+        }' a >> stdev_metric
+
+
+#actions
+grep "Actions: " plan_fin >> dati_actions
+grep -Eo '[0-9\.]+' dati_actions >> b
+awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' < b  >> media_actions
+awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+        END {for (i=1;i<=NF;i++) {
+        printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+        }' b >> stdev_actions
+
+
+#durations
+grep "Duration: " plan_fin >> dati_duration
+grep -Eo '[0-9\.]+' dati_duration >> c
+awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' < c  >> media_duration
+awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+        END {for (i=1;i<=NF;i++) {
+        printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+        }' c >> stdev_durations
+
+
+#Plan quality
+grep "Plan quality: " plan_fin >> dati_plan_quality
+grep -Eo '[0-9\.]+' dati_plan_quality >> d
+awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' < d  >> media_plan_quality
+awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+        END {for (i=1;i<=NF;i++) {
+        printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+        }' d >> stdev_plan_quality
+        
+
+#Num flips        
+grep "Total Num Flips: " plan_fin >> dati_num_flips
+grep -Eo '[0-9\.]+' dati_num_flips >> e
+awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' < e  >> media_num_flips
+awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+        END {for (i=1;i<=NF;i++) {
+        printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+        }' e >> stdev_num_flips
+
+rm a
+rm b 
+rm c
+rm d
+rm e
+
+mkdir means
+mkdir raw_data
+mkdir std-deviation
+
+mv media_metric ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
+mv dati_metric ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+
+mv media_actions ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
+mv dati_actions ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+
+mv media_duration ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
+mv dati_duration ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+
+mv media_plan_quality ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
+mv dati_plan_quality ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+
+mv media_num_flips ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
+mv dati_num_flips ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+
+
+
+mv stdev_metric ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
+mv stdev_actions ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
+mv stdev_durations ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
+mv stdev_plan_quality ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
+mv stdev_num_flips ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
+
+
+
+
+
