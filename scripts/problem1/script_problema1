@@ -7,7 +7,7 @@ rm plan_fin
 
 for i in {1..100} 
 do
-  ./lpg++ -o domain.pddl -f problema1.pddl -speed -noout  >> plan_fin
+      ./lpg++ -speed -o domain.pddl -f problema1.pddl -speed | perl -lne 'if ($found){print} else{if (/Plan computed:(.*)/){print $1; $found++}}' >> plan_fin
 done
 
 
@@ -59,39 +59,53 @@ awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}}
         END {for (i=1;i<=NF;i++) {
         printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
         }' e >> stdev_num_flips
+        
+#Search-time
+grep "Search time: " plan_fin >> dati_search_time
+grep -Eo '[0-9\.]+' dati_search_time >> f
+awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' < f  >> media_search_time
+awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+        END {for (i=1;i<=NF;i++) {
+        printf "%f \n", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+        }' f >> stdev_search_time
 
 rm a
 rm b 
 rm c
 rm d
 rm e
+rm f
 
 mkdir means
 mkdir raw_data
 mkdir std-deviation
 
-mv media_metric ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
-mv dati_metric ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+mv media_metric /home/gianluca/Downloads/test_problemi/test_problema1/means/
+mv dati_metric /home/gianluca/Downloads/test_problemi/test_problema1/raw_data/
 
-mv media_actions ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
-mv dati_actions ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+mv media_actions /home/gianluca/Downloads/test_problemi/test_problema1/means/
+mv dati_actions /home/gianluca/Downloads/test_problemi/test_problema1/raw_data/
 
-mv media_duration ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
-mv dati_duration ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+mv media_duration /home/gianluca/Downloads/test_problemi/test_problema1/means/
+mv dati_duration /home/gianluca/Downloads/test_problemi/test_problema1/raw_data/
 
-mv media_plan_quality ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
-mv dati_plan_quality ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+mv media_plan_quality /home/gianluca/Downloads/test_problemi/test_problema1/means/
+mv dati_plan_quality /home/gianluca/Downloads/test_problemi/test_problema1/raw_data/
 
-mv media_num_flips ~/Desktop/AIRO2/Last\ Version/test_problema1/means/
-mv dati_num_flips ~/Desktop/AIRO2/Last\ Version/test_problema1/raw_data/
+mv media_num_flips /home/gianluca/Downloads/test_problemi/test_problema1/means/
+mv dati_num_flips /home/gianluca/Downloads/test_problemi/test_problema1/raw_data/
+
+mv media_search_time /home/gianluca/Downloads/test_problemi/test_problema1/means/
+mv dati_search_time /home/gianluca/Downloads/test_problemi/test_problema1/raw_data/
 
 
 
-mv stdev_metric ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
-mv stdev_actions ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
-mv stdev_durations ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
-mv stdev_plan_quality ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
-mv stdev_num_flips ~/Desktop/AIRO2/Last\ Version/test_problema1/std-deviation/
+mv stdev_metric /home/gianluca/Downloads/test_problemi/test_problema1/std-deviation/
+mv stdev_actions /home/gianluca/Downloads/test_problemi/test_problema1/std-deviation/
+mv stdev_durations /home/gianluca/Downloads/test_problemi/test_problema1/std-deviation/
+mv stdev_plan_quality /home/gianluca/Downloads/test_problemi/test_problema1/std-deviation/
+mv stdev_num_flips /home/gianluca/Downloads/test_problemi/test_problema1/std-deviation/
+mv stdev_search_time /home/gianluca/Downloads/test_problemi/test_problema1/std-deviation/
 
 
 
