@@ -1,6 +1,6 @@
 Artificial Intelligence for Robotics II
 ===================================================
-AI Planning: Model of a robotic coffee shop scenario in PDDL 
+AI Planning: Model of a Robotic Coffee Shop Scenario in PDDL 
 =============================================================
 
 Project Description
