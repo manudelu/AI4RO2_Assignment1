@@ -8,7 +8,9 @@ Project Description
 
 The description of the project can be found [here](https://github.com/manudelu/AI4RO2_Assignment1/blob/4b65f4def3a06bee1da9225ee677f50f3b1c2d07/Assignment1_AI4RO2.pdf).
 
-For various details about the PDDL documentation refer to the [Planning Wiki](https://planning.wiki).
+To gain comprehensive insights into the development process of the project and to obtain guidance on installing and utilizing the LPG planner, I highly recommend referring to the report [here](https://github.com/manudelu/AI4RO2_Assignment1/blob/ff5be87272dec13db46c57709abca50988e682d4/Report.pdf).
+
+To access a variety of details regarding the PDDL documentation, I recommend referring to the [Planning Wiki](https://planning.wiki).
 
 Team Members
 -------------
