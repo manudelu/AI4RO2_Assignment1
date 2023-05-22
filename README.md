@@ -20,15 +20,17 @@ LPG uses a local search strategy to explore the space of possible solutions. The
 
 LPG handles PDDL 2.1 domains. The domain syntax in PDDL 2.1 includes two important new features, durative-actions and functions which are referred to as numeric fluents
 
-Installing
+Running
 --------------
-To download and use the LPG Planning Engine on your own machine, simply click on the following link: [lpg++](http://helios.hud.ac.uk/scommv/storage/lpg++). After clicking on the hyperlink the download will start automatically.
 
-If you are using Ubuntu as your main operating system, you can use the terminal to navigate to the folder where you installed lpg++ and then make it as executable by typing the command: 
+For running the planning problems you can type on the terminal
 
 ```bash
-chmod +x lpg++
+./lpg++ -o <operator file name> -f <problem file name> -speed
 ```
+
+Where <operator file name> is the domain file called ”caffe-bar-domain.pddl” and the <problem file name>
+are the problem files called ”problemN.pddl” (with N = 1, 2, 3, 4).
 
 Team Members
 -------------
