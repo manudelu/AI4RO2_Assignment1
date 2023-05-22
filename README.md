@@ -23,14 +23,13 @@ LPG handles PDDL 2.1 domains. The domain syntax in PDDL 2.1 includes two importa
 Running
 --------------
 
-For running the planning problems you can type on the terminal
+For running the planning problems you can type on the terminal the following command:
 
 ```bash
 ./lpg++ -o <operator file name> -f <problem file name> -speed
 ```
 
-Where <operator file name> is the domain file called ”caffe-bar-domain.pddl” and the <problem file name>
-are the problem files called ”problemN.pddl” (with N = 1, 2, 3, 4).
+Where `<operator file name>` is the domain file called ”caffe-bar-domain.pddl” and the `<problem file name>` are the problem files called ”problemN.pddl” (with N = 1, 2, 3, 4).
 
 Team Members
 -------------
