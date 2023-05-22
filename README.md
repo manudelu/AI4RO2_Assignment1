@@ -31,6 +31,8 @@ For running the planning problems you can type on the terminal the following com
 
 Where `<operator file name>` is the domain file called ”caffe-bar-domain.pddl” and the `<problem file name>` are the problem files called ”problemN.pddl” (with N = 1, 2, 3, 4).
 
+`Note:` You may have to make lpg++ file executable by typing the command `chmod +x lpg++` in the terminal.
+
 Team Members
 -------------
 
